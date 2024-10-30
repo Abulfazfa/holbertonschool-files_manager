@@ -1,3 +1,5 @@
+// utils/db.js
+
 import { MongoClient } from 'mongodb';
 
 const host = process.env.DB_HOST || 'localhost';
@@ -31,14 +33,17 @@ class DBClient {
   }
 
   isAlive() {
+    // Check if MongoDB client is connected
     return !!this.db;
   }
 
   async nbUsers() {
+    // Count number of documents in 'users' collection
     return this.db.collection('users').countDocuments();
   }
 
   async getUser(query) {
+    // Search for the user in the collection
     console.log('QUERY IN DB.JS', query);
     const user = await this.db.collection('users').findOne(query);
     console.log('GET USER IN DB.JS', user);
@@ -46,13 +51,16 @@ class DBClient {
   }
 
   async nbFiles() {
+    // Count number of documents in 'files' collection
     return this.db.collection('files').countDocuments();
   }
 
   async saveFile(fileData) {
+    // Insert a new document into the 'files' collection
     const result = await this.db.collection('files').insertOne(fileData);
     return { _id: result.insertedId, ...fileData };
   }
 }
 
+// Create and export an instance of DBClient
 module.exports = new DBClient();
