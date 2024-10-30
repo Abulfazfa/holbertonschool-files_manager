@@ -1,1 +1,5 @@
 node_modules/
+.eslintrc.cjs
+.eslintrc.js
+babel.config.js
+*.json
