@@ -1,3 +1,4 @@
+<<<<<<< HEAD:utils/redis.js
 const redis = require('redis');
 
 class RedisClient {
@@ -41,3 +42,5 @@ class RedisClient {
 const redisClient = new RedisClient();
 
 module.exports = redisClient;
+=======
+>>>>>>> parent of 5e558a6 (utils/redis):utils/redis.mjs
